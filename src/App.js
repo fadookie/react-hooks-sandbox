@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import _ from 'lodash';
 import logo from './logo.svg';
 import './App.css';
 
+const setClampedCount = (newCount, setCount) => {
+  setCount(_.clamp(newCount, 1, 100));
+};
+
+const displayFizzBuzz = count => {
+  if (count % 15 === 0) {
+    return 'FizzBuzz';
+  } else if (count % 3 === 0) {
+    return 'Fizz';
+  } else if (count % 5 === 0) {
+    return 'Buzz';
+  } else {
+    return count;
+  }
+}
+
 const App = () => {
+  const [count, setCount] = useState(1);
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload, fool.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>{displayFizzBuzz(count)}</p>
+        <button onClick={() => setClampedCount(count + 1, setCount)}>+</button>
+        <button onClick={() => setClampedCount(count - 1, setCount)}>-</button>
       </header>
     </div>
   );
