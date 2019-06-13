@@ -19,7 +19,7 @@ export const EffectfulComponent = (props) => {
   useEffect(() => {
     console.log(`UseEffect called with foo:${foo} bar:${bar}`);
     return cleanupCallback;
-  }, effectDeps);
+  }, effectDeps); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
