@@ -7,9 +7,10 @@ import { FizzBuzz } from './state';
 import { EffectTest } from './effects';
 import { Momento, CallMeMaybe } from './memos';
 import ReFizzBuzz from './ReFizzBuzz';
+import ReRedux from './redux';
 
 const App = () => {
-  const [activeComponent, setActiveComponent] = useState('ReFizzBuzz');
+  const [activeComponent, setActiveComponent] = useState('ReRedux');
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +20,7 @@ const App = () => {
         <button onClick={() => setActiveComponent('Momento')}>Momento (useMemo)</button>
         <button onClick={() => setActiveComponent('CallMeMaybe')}>CallMeMaybe (useCallback)</button>
         <button onClick={() => setActiveComponent('ReFizzBuzz')}>ReFizzBuzz (useReducer)</button>
+        <button onClick={() => setActiveComponent('ReRedux')}>ReRedux (useReducer)</button>
         <button onClick={() => setActiveComponent('Other')}>Other</button>
         {(() => {
           switch (activeComponent) {
@@ -32,6 +34,8 @@ const App = () => {
               return <CallMeMaybe />;
             case 'ReFizzBuzz':
               return <ReFizzBuzz />;
+            case 'ReRedux':
+              return <ReRedux />;
             default:
               return `Unknown component ${activeComponent}`;
           }
